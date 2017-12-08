@@ -19,7 +19,14 @@ namespace Noriko.Modules
 			Get("/result", _ => 
 			{
 				var dish = this.Bind<DishModel>();
-				NorikoCore.AddDish(dish);
+				try
+				{
+					NorikoCore.AddDish(dish);
+				}catch(Exception e)
+				{
+					Console.WriteLine(e.Message);
+					Console.WriteLine(e.StackTrace);
+				}
 				return View["result", NorikoCore.GetDishes()];
 			});
 		}

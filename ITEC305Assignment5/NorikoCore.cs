@@ -8,7 +8,7 @@ namespace Noriko
 {
     class NorikoCore
     {
-		private const string ConntectionString = "Host=karuta.luminousvector.com;Username=Karuta;Password=;Database=itec305";
+		private const string ConntectionString = "Host=karuta.luminousvector.com;Username=TechSupport;Password=;Database=itec305";
 
 		private static T RunCommand<T>(Func<NpgsqlCommand, T> func)
 		{
@@ -25,7 +25,7 @@ namespace Noriko
 
 		public static void AddDish(DishModel dish) => RunCommand(cmd =>
 		{
-			cmd.CommandText = $"INSERT INTO dishes VALUES('{Uri.EscapeDataString(dish.Name)}', '{dish.Spiciness}')";
+			cmd.CommandText = $"INSERT INTO dishes VALUES('{Uri.EscapeDataString(dish.Name)}', {dish.Spiciness})";
 			cmd.ExecuteNonQuery();
 			return 0;
 		});
@@ -39,7 +39,7 @@ namespace Noriko
 				while (reader.Read())
 					dishes.Add(new DishModel
 					{
-						Name = reader.GetString(0),
+						Name = Uri.UnescapeDataString(reader.GetString(0)),
 						Spiciness = reader.GetInt32(1)
 					});
 			}

@@ -8,7 +8,9 @@
 	</head>
 	<body>
 		<p>Your Dish has been added</p>
-			@foreach(var d in Model)
-				{<p>@d.ToString()</p>}
+		@Each.Model
+			<p>@Current.Name | @Current.Spiciness</p>
+		@EndEach
+		<a href="/">Add Another</a>
 	</body>
 </html>
