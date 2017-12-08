@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Nancy" Version="2.0.0-Pre1892" />
     <PackageReference Include="Nancy.Hosting.Self" Version="2.0.0-Pre1892" />
+    <PackageReference Include="Nancy.ViewEngines.Razor" Version="2.0.0-Pre1892" />
     <PackageReference Include="Npgsql" Version="3.2.6" />
   </ItemGroup>
 
